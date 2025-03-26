@@ -21,8 +21,8 @@
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/ic_pie_chart_placeholder"
         android:contentDescription="Pie chart representing income and expenses"/>
+<!--    android:src="@drawable/ic_pie_chart_placeholder"-->
 
     <!-- Summary Information -->
     <TextView

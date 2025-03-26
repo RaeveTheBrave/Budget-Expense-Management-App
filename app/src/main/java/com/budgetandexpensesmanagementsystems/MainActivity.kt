@@ -2,6 +2,7 @@ package com.budgetandexpensesmanagementsystems
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,13 +19,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // For initializing views
         tvWalletAmount = findViewById(R.id.tvWalletAmount)
         tvIncome = findViewById(R.id.tvIncome)
         tvExpenses = findViewById(R.id.tvExpenses)
 
+        val cardDate = findViewById<androidx.cardview.widget.CardView>(R.id.cardDate)
+        val scrollView = findViewById<ScrollView>(R.id.scView)
+        val cardDisp = findViewById<androidx.cardview.widget.CardView>(R.id.cardDisposableIncome)
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+        // Loading data from Firestore
         loadValuesFromFirestore()
 
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        // Card On Click Listener
+        cardDate.setOnClickListener{
+            startActivity(Intent(this, StatisticsActivity::class.java ))
+        }
+        // Scroll View On Click Listener
+        scrollView.setOnClickListener{
+            startActivity(Intent(this, StatisticsActivity::class.java ))
+        }
+        // Card click listener
+        cardDisp.setOnClickListener{
+            startActivity(Intent(this, ValuesActivity::class.java))
+        }
+
+        // Bottom navigation
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_values -> {
@@ -45,13 +66,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadValuesFromFirestore() {
-        db.collection("budget").document("userValues")
+        db.collection("budget").document("values")
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    tvWalletAmount.text = "Wallet Amount: $" + (document.getDouble("walletAmount") ?: 0.0)
-                    tvIncome.text = "Income: $" + (document.getDouble("income") ?: 0.0)
-                    tvExpenses.text = "Expenses: $" + (document.getDouble("expenses") ?: 0.0)
+                    val wallet = (document.get("wallet") as? Number)?.toDouble() ?: 0.0
+                    val income = (document.get("income") as? Number)?.toDouble() ?: 0.0
+                    val expenses = (document.get("expenses") as? Number)?.toDouble() ?: 0.0
+
+                    tvWalletAmount.text = "Wallet Amount: $${"%.2f".format(wallet)}"
+                    tvIncome.text = "Income: $${"%.2f".format(income)}"
+                    tvExpenses.text = "Expenses: $${"%.2f".format(expenses)}"
                 }
             }
             .addOnFailureListener {

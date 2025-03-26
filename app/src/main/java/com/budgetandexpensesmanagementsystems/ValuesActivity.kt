@@ -14,6 +14,7 @@ class ValuesActivity : AppCompatActivity() {
     private lateinit var etIncome: EditText
     private lateinit var etExpenses: EditText
     private lateinit var btnSave: Button
+
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,12 @@ class ValuesActivity : AppCompatActivity() {
         etIncome = findViewById(R.id.inputIncome)
         etExpenses = findViewById(R.id.inputExpenses)
         btnSave = findViewById(R.id.btnSave)
+
+        val btnBack = findViewById<Button>(R.id.btnBack)
+
+        btnBack.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         btnSave.setOnClickListener {
             saveValuesToFirestore()
@@ -77,9 +84,15 @@ class ValuesActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    etWallet.setText(document.getDouble("walletAmount")?.toString() ?: "0")
-                    etIncome.setText(document.getDouble("income")?.toString() ?: "0")
-                    etExpenses.setText(document.getDouble("expenses")?.toString() ?: "0")
+                    etWallet.setText(
+                        (document.get("wallet") as? Number)?.toDouble()?.toString() ?: "0"
+                    )
+                    etIncome.setText(
+                        (document.get("income") as? Number)?.toDouble()?.toString() ?: "0"
+                    )
+                    etExpenses.setText(
+                        (document.get("income") as? Number)?.toDouble()?.toString() ?: "0"
+                    )
                 }
             }
             .addOnFailureListener {

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "563703375494",
+    "firebase_url": "https://budget-and-expenses-management-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "budget-and-expenses-management",
+    "storage_bucket": "budget-and-expenses-management.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563703375494:android:0aa569bc764b6e6e571307",
+        "android_client_info": {
+          "package_name": "com.budgetandexpensesmanagementsystems"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZqJBLzHUM9gm-TbRB2EHVigix2smEgaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

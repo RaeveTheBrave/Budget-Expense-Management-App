@@ -11,8 +11,7 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:onClick="goBack"/>
+        android:text="Back" />
 
     <!-- Wallet Amount Input -->
     <TextView
@@ -58,8 +57,7 @@
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Changes"
-        android:onClick="saveValues"/>
+        android:text="Save Changes"/>
 
     <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

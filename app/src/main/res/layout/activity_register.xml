@@ -21,10 +21,10 @@
         app:layout_constraintVertical_bias="0.250" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etMail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Input your Name here"
+        android:hint="Input your Email here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/etName"
+        app:layout_constraintTop_toTopOf="@id/etMail"
         app:layout_constraintVertical_bias="0.112" />
 
     <EditText

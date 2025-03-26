@@ -18,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         // Find views
-        val etEmail = findViewById<EditText>(R.id.etName)
+        val etEmail = findViewById<EditText>(R.id.etMail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val etConfirmPassword = findViewById<EditText>(R.id.etConfirmPassword)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
@@ -35,6 +35,7 @@ class RegisterActivity : AppCompatActivity() {
             } else if (password != confirmPassword) {
                 Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show()
             } else {
+                // Register the user with Firebase Authentication
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {

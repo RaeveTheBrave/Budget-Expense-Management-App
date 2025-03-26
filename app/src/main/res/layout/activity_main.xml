@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="12dp"
-        android:onClick="goToStatistics">
+        app:cardCornerRadius="12dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,8 +65,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="12dp"
-        android:onClick="goToValues">
+        app:cardCornerRadius="12dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,12 +88,12 @@
 
     <!-- Scrollable List of Transactions -->
     <ScrollView
+        android:id="@+id/scView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clickable="true"
-        android:focusable="true"
-        android:onClick="goToStatistics">
+        android:focusable="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
