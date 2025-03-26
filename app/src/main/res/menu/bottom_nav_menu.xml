@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/nav_home"
+        android:title="Home" />
+    <!--    android:icon="@drawable/ic_home"-->
+    <item
         android:id="@+id/nav_values"
-        android:title="Values" />
+        android:title="Data" />
 <!--    android:icon="@drawable/ic_values"-->
+    <item
+        android:id="@+id/nav_calendar"
+        android:title="Schedule" />
+    <!--    android:icon="@drawable/ic_values"-->
     <item
         android:id="@+id/nav_statistics"
         android:title="Statistics" />
@@ -12,8 +20,4 @@
         android:id="@+id/nav_settings"
         android:title="Settings" />
 <!--    android:icon="@drawable/ic_settings"-->
-    <item
-        android:id="@+id/nav_home"
-        android:title="Home" />
-<!--    android:icon="@drawable/ic_home"-->
 </menu>

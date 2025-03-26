@@ -1,134 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Current Date Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="12dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="Current Date: 25 March 2025"
-            android:textSize="18sp"/>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Wallet, Expenses, and Income Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardWallet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="12dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-            <TextView
-                android:id="@+id/tvWalletAmount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Wallet Amount: $0"
-                android:textSize="18sp"/>
-            <TextView
-                android:id="@+id/tvIncome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Income: $0"
-                android:textSize="16sp"
-                android:padding="16dp"/>
-            <TextView
-                android:id="@+id/tvExpenses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Expenses: $0"
-                android:textSize="16sp"
-                android:padding="16dp"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Disposable Income Card with ProgressBar -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardDisposableIncome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="12dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-            <TextView
-                android:id="@+id/tvDisposableIncome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Disposable Income: $0"
-                android:textSize="18sp"/>
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:progress="50"
-                android:max="100"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Scrollable List of Transactions -->
+    <!-- Scrollable Content -->
     <ScrollView
         android:id="@+id/scView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:focusable="true">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <!-- Current Date Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="12dp">
+
+                <TextView
+                    android:id="@+id/tvCurrentDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="Current Date: "
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Wallet, Expenses, and Income Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardWallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tvWalletAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Wallet Amount: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tvIncome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Income: "
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/tvExpenses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Expenses: "
+                        android:textSize="14sp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Disposable Income Card with ProgressBar -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDisposableIncome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:id="@+id/tvDisposableIncome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Disposable Income: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <ProgressBar
+                        android:id="@+id/progressBarDisposableIncome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_margin="10dp"
+                        android:max="100"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Scrollable List of Income and Expenses -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Recent Transactions"
+                android:text="Income and Expenses"
                 android:textSize="18sp"
-                android:padding="8dp"/>
-            <!-- Sample transactions -->
-            <TextView
+                android:padding="8dp"
+                android:textStyle="bold"/>
+
+            <!-- Dynamic Transaction Items -->
+            <LinearLayout
+                android:id="@+id/recentIncomeExpensesContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Groceries - $50"
-                android:padding="8dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Salary - $2000"
-                android:padding="8dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rent - $800"
-                android:padding="8dp"/>
+                android:orientation="vertical">
+                <!-- Income and Expenses will be added dynamically -->
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"/>
-</LinearLayout>
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
