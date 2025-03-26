@@ -91,7 +91,7 @@ class ValuesActivity : AppCompatActivity() {
                         (document.get("income") as? Number)?.toDouble()?.toString() ?: "0"
                     )
                     etExpenses.setText(
-                        (document.get("income") as? Number)?.toDouble()?.toString() ?: "0"
+                        (document.get("expenses") as? Number)?.toDouble()?.toString() ?: "0"
                     )
                 }
             }
