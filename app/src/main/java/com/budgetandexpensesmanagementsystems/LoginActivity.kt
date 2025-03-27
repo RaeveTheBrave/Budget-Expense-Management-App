@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnGoToRegister = findViewById<Button>(R.id.btnGoToRegister)
+        val btnForgotPassword = findViewById<Button>(R.id.btnForgotPassword)
 
         // Handle login button click
         btnLogin.setOnClickListener {
@@ -42,9 +43,32 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        // Reset password function
+        btnForgotPassword.setOnClickListener {
+            forgotPassword()
+        }
+
         // Navigate to Register page
         btnGoToRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    private fun forgotPassword() {
+        val email = findViewById<EditText>(R.id.etName).text.toString().trim()
+
+        if (email.isEmpty()) {
+            Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Password reset email sent. Check your inbox.", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 }

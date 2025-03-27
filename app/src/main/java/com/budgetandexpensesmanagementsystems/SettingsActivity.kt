@@ -142,6 +142,8 @@ class SettingsActivity : AppCompatActivity() {
         val position = currencyOptions.indexOf(savedCurrency)
         if (position >= 0) currencySpinner.setSelection(position)
 
+        var isFirstSelection = true  // Flag to track initial selection
+
         // Change currency when user selects a new one
         currencySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -151,7 +153,13 @@ class SettingsActivity : AppCompatActivity() {
                 id: Long
             ) {
                 val selectedCurrency = currencyOptions[position]
-                saveCurrencyPreference(selectedCurrency)
+
+                // Only show toast if this is NOT the initial selection
+                if (!isFirstSelection) {
+                    saveCurrencyPreference(selectedCurrency)
+                    Toast.makeText(this@SettingsActivity, "Currency updated to $selectedCurrency", Toast.LENGTH_SHORT).show()
+                }
+                isFirstSelection = false  // Update flag after first selection
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
